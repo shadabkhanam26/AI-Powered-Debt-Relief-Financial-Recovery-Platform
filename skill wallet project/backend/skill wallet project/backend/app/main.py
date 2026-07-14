@@ -1,15 +1,11 @@
 from app.database import engine, Base 
 from app.models.models import User, Loan, AIHistory
-from app.routes.user import router as user_router
-from app.routes.debt import router as debt_router
 from app.routes.ai_routes import router as ai_router
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="FinRelief AI")
 app.include_router(ai_router)
-app.include_router(user_router)
-app.include_router(debt_router)
 #Base.metadata.create_all(bind=engine)
 app.add_middleware(
     CORSMiddleware,
